@@ -52,8 +52,8 @@ class ADAPTBIOTrainer:
     def get_sparsity(self):
         total, sparse = 0, 0
         for module in self.model.modules():
-            if hasattr(module, "soma") and hasattr(module.soma, "mask"):
-                mask = module.soma.mask
+            if hasattr(module, "soma") and hasattr(module.soma, "current_mask"):
+                mask = module.soma.current_mask
                 if mask is not None:
                     total += mask.numel()
                     sparse += (mask == 0).sum().item()
@@ -63,7 +63,7 @@ class ADAPTBIOTrainer:
         self.model.train()
         inputs, targets = inputs.to(self.device), targets.to(self.device)
         self.optimizer.zero_grad()
-        logits = self.model(inputs)
+        logits = self.model(inputs, step=self.global_step)   # ← pass step
         loss = self.criterion(logits.view(-1, logits.size(-1)), targets.view(-1))
         loss.backward()
         torch.nn.utils.clip_grad_norm_(self.model.parameters(), 1.0)
@@ -80,7 +80,7 @@ class ADAPTBIOTrainer:
             if i >= max_batches:
                 break
             inputs, targets = inputs.to(self.device), targets.to(self.device)
-            logits = self.model(inputs)
+            logits = self.model(inputs, step=999999)   # ← large step = fully sparse
             loss = self.criterion(logits.view(-1, logits.size(-1)), targets.view(-1))
             total_loss += loss.item()
             count += 1
