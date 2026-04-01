@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "adapt-bio"
+version = "0.1.0"
+description = "ADAPT-BIO: Anticipatory Dynamic Attention Pruning Topology — Biologically Inspired"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
