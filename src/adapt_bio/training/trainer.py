@@ -101,7 +101,7 @@ class ADAPTBIOTrainer:
                 inputs, targets = next(train_iter)
             loss = self.train_step(inputs, targets)
             self.train_losses.append(loss)
-            if step % log_every == 0:
+             if step % log_every == 0:
                 sparsity = self.get_sparsity()
                 self.sparsity_log.append((step, sparsity))
                 elapsed = time.time() - start
