@@ -29,15 +29,15 @@ This bio-hybrid mechanism yields massive computational savings (up to **98.6% FL
 Below are visual representations of the attention masks and performance benchmarks:
 
 ### Three Bio-Signals Integrated
-![Three Biosignals](../../demo_three_biosignals.png)
+![Three Biosignals](demo_three_biosignals.png)
 *Figure 1: How Slime Mold routing, RNA editing, and Starling murmurations unite to form the SOMA mask.*
 
 ### Attention Mask Sparsity & Dynamics
-![Attention Mask](../../demo_attention_mask.png)
+![Attention Mask](demo_attention_mask.png)
 *Figure 2: Real-time visualization of the sparse, dynamically re-edited attention mask routing.*
 
 ### Performance Card
-![Summary Card](../../demo_summary_card.png)
+![Summary Card](demo_summary_card.png)
 *Figure 3: Summary card showing perplexity vs sparsity trade-offs.*
 
 ---
