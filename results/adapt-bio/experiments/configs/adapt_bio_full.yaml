@@ -1,0 +1,8 @@
+experiment_name: adapt_bio_full_soma
+soma:
+  enabled: true
+  slime_mold: true
+  rna_editing: true
+  starling_topology: true
+  k_neighbors: 7
+  rna_update_interval: 500

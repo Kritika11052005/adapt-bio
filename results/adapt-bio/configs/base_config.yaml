@@ -1,0 +1,32 @@
+# ADAPT-BIO base configuration
+model:
+  d_model: 256
+  num_heads: 4
+  num_layers: 4
+  seq_len: 512
+  vocab_size: 50257  # GPT-2 tokenizer
+
+soma:
+  k_neighbors: 7           # Starling rule — 7 neighbors per token
+  anticipation_frac: 0.05  # 5% of training = slime mold window
+  rna_update_interval: 500 # Steps between RNA mask re-edits
+
+training:
+  dataset: wikitext-103
+  batch_size: 16
+  max_steps: 20000
+  lr: 3.0e-4
+  warmup_steps: 500
+  grad_clip: 1.0
+  seed: 42
+
+logging:
+  wandb_project: adapt-bio
+  log_interval: 100
+  eval_interval: 1000
+  save_interval: 2000
+
+hardware:
+  device: cuda   # Kaggle P100
+  dtype: float16
+  compile: false  # torch.compile off on P100
